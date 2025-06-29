@@ -1,0 +1,167 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Arial Narrow Bold', sans-serif;
+}
+
+body {
+    background: #edede9;
+
+}
+
+main {
+    display: flex;
+    justify-content: center;
+
+}
+
+
+.cellByFirstWord,
+.cellBySecondWord,
+.cellByThreeWord,
+.example {
+    border: 1px solid #000;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0.5 #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: lowercase;
+}
+
+.isCompleted {
+    border: 1px solid #30d46f;
+    color: #30d46f;
+}
+
+.isFail {
+    border: 1px solid #EA4C89;
+    color: #EA4C89;
+
+}
+
+.text-center {
+    text-align: center;
+}
+
+.game {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(11, 1fr);
+    gap: 1.5px;
+    background: #FAF2E8;
+    border: 0.5px solid #000;
+    padding: 3px;
+    margin-left: 2px;
+    margin-right: 2px;
+    overflow: auto;
+}
+
+
+/* CSS */
+.button {
+    background-color: #EA4C89;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button:hover {
+    background-color: #F082AC;
+}
+
+.buttonSecondary {
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.complete {
+    background: #30d46f;
+    color: #FFFFFF;
+}
+
+.buttonSecondary:hover {
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+p {
+    padding: 2px;
+
+}
+
+article {
+    height: auto;
+    margin: 10px;
+}
+
+.content-buttons {
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+@media (width<500px) {
+
+    h1 {
+        font-size: 23px;
+    }
+
+    .cellByFirstWord,
+    .cellBySecondWord,
+    .cellByThreeWord {
+        width: 27px;
+        height: 27px;
+    }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Crucigrama">
+    <meta property="og:url" content="https://completaelcrucigrama.netlify.app/">
+    <meta property="og:image" content="/image/logo.svg">
+    <meta property="og:description" content="Completa el siguiente crucigrama!">
+    <meta name="description" content="Completa el siguiente crucigrama!">
+    <title>Crucigrama</title>
+    <link rel="shortcut icon" href="/image/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/modal.css">
+</head>
+
+<body>
+    <h1 class="text-center">Crucigrama División Política de México</h1>
+    <br>
+    <main>
+
+        <section class="game">
+
+        </section>
+
+    </main>
+
+    <div class="flex-center content-buttons">
+        <button class="button">Comprobar</button>
+        <button class="buttonSecondary optionReset">Reiniciar</button>
+
+    </div>
+
+    <br>
+    <hr>
+
+    <article>
+
+        <p>1- El poder está encargado de vigilar el cumplimiento de la Constitución y las leyes.
+        </p>
+        <p>2- Este poder se deposita en el Congreso de la Unión, que se divide en dos Cámaras, una de Diputados y otra
+            de
+            Senadores. </p>
+        <p>3- El Poder gobierna con lo establecido por la legislación. Su titular, Presidente Constitucional
+            de los Estados Unidos Mexicanos</p>
+
+    </article>
+
+    <!-- modal -->
+    <div id="modal" class="modal">
+        <div class="flex" id="flex">
+
+            <div class="content-modal">
+
+                <div class="modal-header flex">
+                    <h2>Completado</h2>
+                    <span class="close" id="close">&times;</span>
+                </div>
+
+                <div class="modal-body">
+                    <p>Haz completado correctamente🎉!</p>
+                </div>
+
+                <div class="modal-footer">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- modal -->
+
+    <!-- script-->
+    <script type="module" src="/js/app.js"></script>
+    <script type="module" src="/js/modal.js"></script>
+    <!-- script-->
+</body>
+
+</html>
