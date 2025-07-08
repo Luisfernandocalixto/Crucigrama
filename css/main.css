@@ -152,6 +152,11 @@ article {
     margin-top: 10px;
 }
 
+pre {
+    position: fixed;
+    margin: 5px;
+}
+
 @media (width<500px) {
 
     h1 {

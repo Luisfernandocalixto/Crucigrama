@@ -1,5 +1,5 @@
 import { removeAttributes, verifyWordsInStorage } from "./functions.js";
-import { board, cellsByFirstWord, cellsBySecondWord, cellsByThreeWord, levelWords, words } from "./provides.js";
+import { board, cellsByFirstWord, cellsBySecondWord, cellsByThreeWord, levelWords, words, span1, span2, span3 } from "./provides.js";
 import {
     inputByFirstCells, inputBySecondCells, inputsByThreeCells, inputByFirstIntersection, inputBySecondIntersection
 } from "./template.js";
@@ -11,10 +11,14 @@ document.addEventListener('DOMContentLoaded', async function () {
     const allDivElem = document.querySelectorAll('div')
     const fromArray = Array.from(allDivElem)
 
+
     fromArray.map((el, index) => {
         cellsByFirstWord.map(itemOfFirst => {
-            if (index === itemOfFirst) {
+            if (index === 3) {
+                el.insertBefore(span1, el.firstChild)
 
+            }
+            if (index === itemOfFirst) {
                 el.innerHTML = inputByFirstCells
             }
         })
@@ -30,8 +34,13 @@ document.addEventListener('DOMContentLoaded', async function () {
             }
         })
 
+        if (index === 33) {
+            el.insertBefore(span2, el.firstChild)
+
+        }
         if (index === 34) {
             el.innerHTML = inputByFirstIntersection
+            el.insertBefore(span3, el.firstChild)
 
         }
         if (index === 36) {
@@ -59,19 +68,22 @@ document.addEventListener('DOMContentLoaded', async function () {
         removeAttributes(inputsByThreeWord)
     })
 
-    async function verifyWinner() {
+    function verifyWinner() {
         if (getFirstWordStorage && getSecondWordStorage && getThreeWordStorage) {
             document.querySelector('#modal').style.display = 'block'
         }
-        const isCompletedFirstWord = Array.from(inputsByFirstWord).every(elem => elem.matches('.isCompleted'))
-        const isCompletedSecondWord = Array.from(inputsBySecondWord).every(elem => elem.matches('.isCompleted'))
-        const isCompletedThreeWord = Array.from(inputsByThreeWord).every(elem => elem.matches('.isCompleted'))
 
-        if (isCompletedFirstWord && isCompletedSecondWord && isCompletedThreeWord) {
-            document.querySelector('#modal').style.display = 'block'
+        async function verifyInputs() {
+            const isCompletedFirstWord = Array.from(inputsByFirstWord).every(elem => elem.matches('.isCompleted'))
+            const isCompletedSecondWord = Array.from(inputsBySecondWord).every(elem => elem.matches('.isCompleted'))
+            const isCompletedThreeWord = Array.from(inputsByThreeWord).every(elem => elem.matches('.isCompleted'))
 
+            if (isCompletedFirstWord && isCompletedSecondWord && isCompletedThreeWord) {
+                document.querySelector('#modal').style.display = 'block'
+            }
 
         }
+        verifyInputs()
     }
 
     verifyWinner()

@@ -7,11 +7,18 @@ const words = {
     isSecondWord: 'legislativo',
     isThreeWord: 'ejecutivo',
 }
-const  levelWords = {
+const levelWords = {
     firstWordComplete: 'firstWordComplete',
     secondWordComplete: 'secondWordComplete',
     threeWordComplete: 'threeWordComplete',
 }
+
+const span1 = document.createElement('pre')
+span1.textContent = '1'
+const span2 = document.createElement('pre')
+span2.textContent = '2'
+const span3 = document.createElement('pre')
+span3.textContent = '3'
 
 
 export {
@@ -20,5 +27,8 @@ export {
     cellsBySecondWord,
     cellsByThreeWord,
     words,
-    levelWords
+    levelWords,
+    span1,
+    span2,
+    span3
 }
