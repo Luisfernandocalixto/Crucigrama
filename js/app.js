@@ -1,3 +1,4 @@
+//imports 
 import { removeAttributes, verifyWordsInStorage } from "./functions.js";
 import { board, cellsByFirstWord, cellsBySecondWord, cellsByThreeWord, levelWords, words, span1, span2, span3 } from "./provides.js";
 import {
@@ -48,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     })
 
-
+    // elements of DOM =>  class="cellByFirstWord"
     const inputsByFirstWord = document.querySelectorAll('.cellByFirstWord')
     const inputsBySecondWord = document.querySelectorAll('.cellBySecondWord')
     const inputsByThreeWord = document.querySelectorAll('.cellByThreeWord')
@@ -58,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const getFirstWordStorage = localStorage.getItem('firstWordComplete')
     const getSecondWordStorage = localStorage.getItem('secondWordComplete')
     const getThreeWordStorage = localStorage.getItem('threeWordComplete')
-
+    //reset game
     btnReset.addEventListener('click', async function () {
         localStorage.removeItem('firstWordComplete')
         localStorage.removeItem('secondWordComplete')
