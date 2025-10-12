@@ -5,121 +5,121 @@ import {
     inputByFirstCells, inputBySecondCells, inputsByThreeCells, inputByFirstIntersection, inputBySecondIntersection
 } from "./template.js";
 document.addEventListener('DOMContentLoaded', async function () {
+    // elements of DOM 
+    const sectionElem = document.querySelector('section');
+    sectionElem.innerHTML = board.map((el, index) => `<div></div>`).join('');
 
-    const sectionElem = document.querySelector('section')
-    sectionElem.innerHTML = board.map((el, index) => `<div></div>`).join('')
+    const allDivElem = document.querySelectorAll('div');
+    const fromArray = Array.from(allDivElem);
 
-    const allDivElem = document.querySelectorAll('div')
-    const fromArray = Array.from(allDivElem)
-
-
+    // show board of  crossword puzzle
     fromArray.map((el, index) => {
         cellsByFirstWord.map(itemOfFirst => {
             if (index === 3) {
-                el.insertBefore(span1, el.firstChild)
+                el.insertBefore(span1, el.firstChild);
 
             }
             if (index === itemOfFirst) {
-                el.innerHTML = inputByFirstCells
+                el.innerHTML = inputByFirstCells;
             }
         })
         cellsBySecondWord.map(itemOfSecond => {
             if (index === itemOfSecond) {
-                el.innerHTML = inputBySecondCells
+                el.innerHTML = inputBySecondCells;
             }
         })
 
         cellsByThreeWord.map(itemOfThree => {
             if (index === itemOfThree) {
-                el.innerHTML = inputsByThreeCells
+                el.innerHTML = inputsByThreeCells;
             }
         })
 
         if (index === 33) {
-            el.insertBefore(span2, el.firstChild)
+            el.insertBefore(span2, el.firstChild);
 
         }
         if (index === 34) {
-            el.innerHTML = inputByFirstIntersection
-            el.insertBefore(span3, el.firstChild)
+            el.innerHTML = inputByFirstIntersection;
+            el.insertBefore(span3, el.firstChild);
 
         }
         if (index === 36) {
-            el.innerHTML = inputBySecondIntersection
+            el.innerHTML = inputBySecondIntersection;
         }
     })
 
     // elements of DOM =>  class="cellByFirstWord"
-    const inputsByFirstWord = document.querySelectorAll('.cellByFirstWord')
-    const inputsBySecondWord = document.querySelectorAll('.cellBySecondWord')
-    const inputsByThreeWord = document.querySelectorAll('.cellByThreeWord')
-    const button = document.querySelector('.button')
-    const btnReset = document.querySelector('.optionReset')
+    const inputsByFirstWord = document.querySelectorAll('.cellByFirstWord');
+    const inputsBySecondWord = document.querySelectorAll('.cellBySecondWord');
+    const inputsByThreeWord = document.querySelectorAll('.cellByThreeWord');
+    const button = document.querySelector('.button');
+    const btnReset = document.querySelector('.optionReset');
 
-    const getFirstWordStorage = localStorage.getItem('firstWordComplete')
-    const getSecondWordStorage = localStorage.getItem('secondWordComplete')
-    const getThreeWordStorage = localStorage.getItem('threeWordComplete')
+    const getFirstWordStorage = localStorage.getItem('firstWordComplete');
+    const getSecondWordStorage = localStorage.getItem('secondWordComplete');
+    const getThreeWordStorage = localStorage.getItem('threeWordComplete');
     //reset game
     btnReset.addEventListener('click', async function () {
-        localStorage.removeItem('firstWordComplete')
-        localStorage.removeItem('secondWordComplete')
-        localStorage.removeItem('threeWordComplete')
-        removeAttributes(inputsByFirstWord)
-        removeAttributes(inputsBySecondWord)
-        removeAttributes(inputsByThreeWord)
+        localStorage.removeItem('firstWordComplete');
+        localStorage.removeItem('secondWordComplete');
+        localStorage.removeItem('threeWordComplete');
+        removeAttributes(inputsByFirstWord);
+        removeAttributes(inputsBySecondWord);
+        removeAttributes(inputsByThreeWord);
     })
 
     function verifyWinner() {
         if (getFirstWordStorage && getSecondWordStorage && getThreeWordStorage) {
-            document.querySelector('#modal').style.display = 'block'
+            document.querySelector('#modal').style.display = 'block';
         }
 
         async function verifyInputs() {
-            const isCompletedFirstWord = Array.from(inputsByFirstWord).every(elem => elem.matches('.isCompleted'))
-            const isCompletedSecondWord = Array.from(inputsBySecondWord).every(elem => elem.matches('.isCompleted'))
-            const isCompletedThreeWord = Array.from(inputsByThreeWord).every(elem => elem.matches('.isCompleted'))
+            const isCompletedFirstWord = Array.from(inputsByFirstWord).every(elem => elem.matches('.isCompleted'));
+            const isCompletedSecondWord = Array.from(inputsBySecondWord).every(elem => elem.matches('.isCompleted'));
+            const isCompletedThreeWord = Array.from(inputsByThreeWord).every(elem => elem.matches('.isCompleted'));
 
             if (isCompletedFirstWord && isCompletedSecondWord && isCompletedThreeWord) {
-                document.querySelector('#modal').style.display = 'block'
+                document.querySelector('#modal').style.display = 'block';
             }
 
         }
-        verifyInputs()
+        verifyInputs();
     }
 
-    verifyWinner()
+    verifyWinner();
 
 
     if (getFirstWordStorage) {
-        verifyWordsInStorage(getFirstWordStorage, inputsByFirstWord)
+        verifyWordsInStorage(getFirstWordStorage, inputsByFirstWord);
     }
 
     if (getSecondWordStorage) {
-        verifyWordsInStorage(getSecondWordStorage, inputsBySecondWord)
+        verifyWordsInStorage(getSecondWordStorage, inputsBySecondWord);
     }
 
     if (getThreeWordStorage) {
-        verifyWordsInStorage(getThreeWordStorage, inputsByThreeWord)
+        verifyWordsInStorage(getThreeWordStorage, inputsByThreeWord);
     }
 
     button.addEventListener('click', verifyWordCompletes);
 
     async function verifyWordCompletes() {
         const verifyFirstWord = Array.from(inputsByFirstWord).map((elem) => {
-            let isFirstWord = ''
-            isFirstWord += elem.value
+            let isFirstWord = '';
+            isFirstWord += elem.value;
             if (isFirstWord) {
-                return isFirstWord
+                return isFirstWord;
             } else {
-                return ''
+                return '';
             }
         })
 
         function addStylesCompleted(inputs, setWordComplete) {
             Array.from(inputs).map(elem => {
-                elem.classList.add("isCompleted")
-                elem.setAttribute('readonly', true)
-                localStorage.setItem(`${setWordComplete}`, JSON.stringify(Array.from(inputs).map(elem => elem.value)))
+                elem.classList.add("isCompleted");
+                elem.setAttribute('readonly', true);
+                localStorage.setItem(`${setWordComplete}`, JSON.stringify(Array.from(inputs).map(elem => elem.value)));
             })
         }
 
@@ -127,53 +127,53 @@ document.addEventListener('DOMContentLoaded', async function () {
             Array.from(inputs).map(elem => {
                 elem.classList.add("isFail")
                 setInterval(() => {
-                    elem.classList.remove("isFail")
-                }, 3000)
+                    elem.classList.remove("isFail");
+                }, 3000);
             })
         }
 
         if (verifyFirstWord.join('') === words.isFirstWord) {
-            addStylesCompleted(inputsByFirstWord, levelWords.firstWordComplete)
+            addStylesCompleted(inputsByFirstWord, levelWords.firstWordComplete);
         }
         else {
-            addStylesFailed(inputsByFirstWord)
+            addStylesFailed(inputsByFirstWord);
         }
 
         const verifySecondWord = Array.from(inputsBySecondWord).map((elem) => {
-            let isSecondWord = ''
-            isSecondWord += elem.value
+            let isSecondWord = '';
+            isSecondWord += elem.value;
             if (isSecondWord) {
-                return isSecondWord
+                return isSecondWord;
             } else {
-                return ''
+                return '';
             }
         })
 
         if (verifySecondWord.join('') === words.isSecondWord) {
-            addStylesCompleted(inputsBySecondWord, levelWords.secondWordComplete)
+            addStylesCompleted(inputsBySecondWord, levelWords.secondWordComplete);
         }
         else {
-            addStylesFailed(inputsBySecondWord)
+            addStylesFailed(inputsBySecondWord);
         }
 
 
         const verifyThreeWord = Array.from(inputsByThreeWord).map((elem) => {
-            let isThreeWord = ''
-            isThreeWord += elem.value
+            let isThreeWord = '';
+            isThreeWord += elem.value;
             if (isThreeWord) {
-                return isThreeWord
+                return isThreeWord;
             } else {
-                return ''
+                return '';
             }
         })
 
         if (verifyThreeWord.join('') === words.isThreeWord) {
-            addStylesCompleted(inputsByThreeWord, levelWords.threeWordComplete)
+            addStylesCompleted(inputsByThreeWord, levelWords.threeWordComplete);
         }
         else {
-            addStylesFailed(inputsByThreeWord)
+            addStylesFailed(inputsByThreeWord);
         }
-        verifyWinner()
+        verifyWinner();
     }
 
 })

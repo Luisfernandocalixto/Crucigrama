@@ -24,7 +24,6 @@ main {
     border: 1px solid #000;
     width: 40px;
     height: 40px;
-    box-shadow: 0.5 #000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,7 +62,7 @@ main {
 
 /* CSS */
 .button {
-    background-color: #EA4C89;
+    background-color: #9B193F;
     border-radius: 8px;
     border-style: none;
     box-sizing: border-box;
@@ -153,7 +152,7 @@ article {
 }
 
 pre {
-    position: fixed;
+    position: absolute;
     margin: 5px;
 }
 
@@ -162,11 +161,16 @@ pre {
     h1 {
         font-size: 23px;
     }
-
+    
     .cellByFirstWord,
     .cellBySecondWord,
     .cellByThreeWord {
         width: 27px;
         height: 27px;
+    }
+
+    pre {
+        font-size: 9px;
+
     }
 }
