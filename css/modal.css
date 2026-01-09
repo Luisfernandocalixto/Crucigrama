@@ -1,4 +1,3 @@
-
 .flex {
     width: 100%;
     height: 100%;
@@ -21,7 +20,12 @@
 }
 
 .content-modal {
-    position: relative;
+    text-wrap: balance;
+    overflow: auto;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
     background-color: #fefefe;
     margin: auto;
     width: 30%;
@@ -47,6 +51,8 @@
     color: #000;
     font-size: 30px;
     font-weight: bold;
+    outline: none;
+    border: none;
 }
 
 .close:hover {

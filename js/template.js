@@ -1,12 +1,25 @@
-const inputByFirstCells = `<input type="text" pattern=".{1,}" maxlength="1"  class="cellByFirstWord"/>`;
+function inputByFirstCells() {
+    return `<input type="text" pattern=".{1,}" maxlength="1" aria-label="cellByFirstWord" class="cellByFirstWord"/>`;
+}
 
-const inputBySecondCells = `<input type="text" pattern=".{1,}" maxlength="1"  class="cellBySecondWord"/>`;
+function inputBySecondCells() {
+    return `<input type="text" pattern=".{1,}" maxlength="1" aria-label="cellBySecondWord" class="cellBySecondWord"/>`;
 
-const inputsByThreeCells = `<input type="text" pattern=".{1,}" maxlength="1" class="cellByThreeWord"/>`;
+}
 
-const inputByFirstIntersection = `<input type="text" pattern=".{1,}" maxlength="1"  class=" cellBySecondWord cellByThreeWord"/>`;
+function inputsByThreeCells() {
 
-const inputBySecondIntersection = `<input type="text" pattern=".{1,}" maxlength="1"  class="cellByFirstWord cellBySecondWord"/>`;
+    return `<input type="text" pattern=".{1,}" maxlength="1"aria-label="cellByThreeWord" class="cellByThreeWord"/>`;
+}
+
+function inputByFirstIntersection() {
+    return `<input type="text" pattern=".{1,}" maxlength="1" aria-label="cellBySecondWord&cellByThreeWord" class=" cellBySecondWord cellByThreeWord"/>`;
+}
+
+function inputBySecondIntersection() {
+    return `<input type="text" pattern=".{1,}" maxlength="1" aria-label="cellByFirstWord&cellBySecondWord" class="cellByFirstWord cellBySecondWord"/>`;
+
+}
 
 
 export {

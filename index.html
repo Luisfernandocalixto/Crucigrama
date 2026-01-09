@@ -49,30 +49,27 @@
     </article>
 
     <!-- modal -->
-    <div id="modal" class="modal">
-        <div class="flex" id="flex">
-
-            <div class="content-modal">
-
-                <div class="modal-header flex">
-                    <h2>Completado</h2>
-                    <span class="close" id="close">&times;</span>
-                </div>
-
-                <div class="modal-body">
-                    <p>Haz completado correctamente🎉!</p>
-                </div>
-
-                <div class="modal-footer">
-                </div>
-
+    <dialog id="favDialog" closedby="any" class="content-modal">
+        <form method="dialog">
+            <div class="modal-header flex">
+                <h2>Completado</h2>
+                <button id="cancel" type="reset" aria-label="close" class="close">
+                    &times;
+                </button>
             </div>
-        </div>
-    </div>
+            <section class="modal-body">
+                <p>Haz completado correctamente🎉!</p>
+            </section>
+            <menu class="modal-footer">
+            </menu>
+        </form>
+    </dialog>
+
+
     <!-- modal -->
 
     <!-- script-->
-    <script type="module"  src="/js/app.js"></script>
+    <script type="module" src="/js/app.js"></script>
     <script type="module" src="/js/modal.js"></script>
     <!-- script-->
 </body>

@@ -1,19 +1,16 @@
 // elements of DOM =>   id="modal"
-let modal = document.getElementById('modal');
-let flex = document.getElementById('flex');
-let closeModal = document.getElementById('close');
-
-
-
-closeModal.addEventListener('click', function () {
-    modal.style.display = 'none';
-});
-
-window.addEventListener('click', function (e) {
-    if (e.target === flex) {
-        modal.style.display = 'none';
-
-    }
+document.addEventListener('DOMContentLoaded', function(){
+    
+    (function () {
+        var cancelButton = document.getElementById("cancel");
+        var favDialog = document.getElementById("favDialog");
+                
+        // Form cancel button closes the dialog box
+        cancelButton.addEventListener("click", function () {
+            favDialog.close();
+        });
+    })();
+    
 });
 
 

@@ -7,7 +7,7 @@ import {
 document.addEventListener('DOMContentLoaded', async function () {
     // elements of DOM 
     const sectionElem = document.querySelector('section');
-    sectionElem.innerHTML = board.map((el, index) => `<div></div>`).join('');
+    sectionElem.innerHTML = board.map((el) => `<div></div>`).join('');
 
     const allDivElem = document.querySelectorAll('div');
     const fromArray = Array.from(allDivElem);
@@ -20,18 +20,18 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             }
             if (index === itemOfFirst) {
-                el.innerHTML = inputByFirstCells;
+                el.innerHTML = inputByFirstCells();
             }
         })
         cellsBySecondWord.map(itemOfSecond => {
             if (index === itemOfSecond) {
-                el.innerHTML = inputBySecondCells;
+                el.innerHTML = inputBySecondCells();
             }
         })
 
         cellsByThreeWord.map(itemOfThree => {
             if (index === itemOfThree) {
-                el.innerHTML = inputsByThreeCells;
+                el.innerHTML = inputsByThreeCells();
             }
         })
 
@@ -40,12 +40,12 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         }
         if (index === 34) {
-            el.innerHTML = inputByFirstIntersection;
+            el.innerHTML = inputByFirstIntersection();
             el.insertBefore(span3, el.firstChild);
 
         }
         if (index === 36) {
-            el.innerHTML = inputBySecondIntersection;
+            el.innerHTML = inputBySecondIntersection();
         }
     })
 
@@ -71,18 +71,18 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     function verifyWinner() {
         if (getFirstWordStorage && getSecondWordStorage && getThreeWordStorage) {
-            document.querySelector('#modal').style.display = 'block';
+            document.querySelector('#favDialog')?.showModal();
         }
-
+        
         async function verifyInputs() {
             const isCompletedFirstWord = Array.from(inputsByFirstWord).every(elem => elem.matches('.isCompleted'));
             const isCompletedSecondWord = Array.from(inputsBySecondWord).every(elem => elem.matches('.isCompleted'));
             const isCompletedThreeWord = Array.from(inputsByThreeWord).every(elem => elem.matches('.isCompleted'));
-
+            
             if (isCompletedFirstWord && isCompletedSecondWord && isCompletedThreeWord) {
-                document.querySelector('#modal').style.display = 'block';
+                document.querySelector('#favDialog')?.showModal();
             }
-
+            
         }
         verifyInputs();
     }
@@ -113,23 +113,23 @@ document.addEventListener('DOMContentLoaded', async function () {
             } else {
                 return '';
             }
-        })
+        });
 
         function addStylesCompleted(inputs, setWordComplete) {
             Array.from(inputs).map(elem => {
                 elem.classList.add("isCompleted");
                 elem.setAttribute('readonly', true);
                 localStorage.setItem(`${setWordComplete}`, JSON.stringify(Array.from(inputs).map(elem => elem.value)));
-            })
+            });
         }
 
         function addStylesFailed(inputs) {
             Array.from(inputs).map(elem => {
-                elem.classList.add("isFail")
+                elem.classList.add("isFail");
                 setInterval(() => {
                     elem.classList.remove("isFail");
                 }, 3000);
-            })
+            });
         }
 
         if (verifyFirstWord.join('') === words.isFirstWord) {
