@@ -1,53 +1,52 @@
 //imports 
 import { removeAttributes, verifyWordsInStorage } from "./functions.js";
-import { board, cellsByFirstWord, cellsBySecondWord, cellsByThreeWord, levelWords, words, span1, span2, span3 } from "./provides.js";
-import {
-    inputByFirstCells, inputBySecondCells, inputsByThreeCells, inputByFirstIntersection, inputBySecondIntersection
-} from "./template.js";
+import { levelWords, words, } from "./provides.js";
+
 document.addEventListener('DOMContentLoaded', async function () {
-    // elements of DOM 
-    const sectionElem = document.querySelector('section');
-    sectionElem.innerHTML = board.map((el) => `<div></div>`).join('');
+    // // elements of DOM 
+    // const sectionElem = document.querySelector('section');
+    // sectionElem.innerHTML = board.map((el) => `<div></div>`).join('');
 
-    const allDivElem = document.querySelectorAll('div');
-    const fromArray = Array.from(allDivElem);
+    // // create initial board =>
+    // const allDivElem = document.querySelectorAll('div');
+    // const fromArray = Array.from(allDivElem);
 
-    // show board of  crossword puzzle
-    fromArray.map((el, index) => {
-        cellsByFirstWord.map(itemOfFirst => {
-            if (index === 3) {
-                el.insertBefore(span1, el.firstChild);
+    // // show board of  crossword puzzle
+    // fromArray.map((el, index) => {
+    //     cellsByFirstWord.map(itemOfFirst => {
+    //         if (index === 3) {
+    //             el.insertBefore(span1, el.firstChild);
 
-            }
-            if (index === itemOfFirst) {
-                el.innerHTML = inputByFirstCells();
-            }
-        })
-        cellsBySecondWord.map(itemOfSecond => {
-            if (index === itemOfSecond) {
-                el.innerHTML = inputBySecondCells();
-            }
-        })
+    //         }
+    //         if (index === itemOfFirst) {
+    //             el.innerHTML = inputByFirstCells();
+    //         }
+    //     })
+    //     cellsBySecondWord.map(itemOfSecond => {
+    //         if (index === itemOfSecond) {
+    //             el.innerHTML = inputBySecondCells();
+    //         }
+    //     })
 
-        cellsByThreeWord.map(itemOfThree => {
-            if (index === itemOfThree) {
-                el.innerHTML = inputsByThreeCells();
-            }
-        })
+    //     cellsByThreeWord.map(itemOfThree => {
+    //         if (index === itemOfThree) {
+    //             el.innerHTML = inputsByThreeCells();
+    //         }
+    //     })
 
-        if (index === 33) {
-            el.insertBefore(span2, el.firstChild);
+    //     if (index === 33) {
+    //         el.insertBefore(span2, el.firstChild);
 
-        }
-        if (index === 34) {
-            el.innerHTML = inputByFirstIntersection();
-            el.insertBefore(span3, el.firstChild);
+    //     }
+    //     if (index === 34) {
+    //         el.innerHTML = inputByFirstIntersection();
+    //         el.insertBefore(span3, el.firstChild);
 
-        }
-        if (index === 36) {
-            el.innerHTML = inputBySecondIntersection();
-        }
-    })
+    //     }
+    //     if (index === 36) {
+    //         el.innerHTML = inputBySecondIntersection();
+    //     }
+    // });
 
     // elements of DOM =>  class="cellByFirstWord"
     const inputsByFirstWord = document.querySelectorAll('.cellByFirstWord');
@@ -147,7 +146,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             } else {
                 return '';
             }
-        })
+        });
 
         if (verifySecondWord.join('') === words.isSecondWord) {
             addStylesCompleted(inputsBySecondWord, levelWords.secondWordComplete);
@@ -165,7 +164,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             } else {
                 return '';
             }
-        })
+        });
 
         if (verifyThreeWord.join('') === words.isThreeWord) {
             addStylesCompleted(inputsByThreeWord, levelWords.threeWordComplete);
@@ -176,4 +175,4 @@ document.addEventListener('DOMContentLoaded', async function () {
         verifyWinner();
     }
 
-})
+});
